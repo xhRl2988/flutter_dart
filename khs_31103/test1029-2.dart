@@ -52,6 +52,61 @@ class TextScreen extends State<TestScreen> {
         }
     );
   }
+
+  _modalBottomSheet(){
+    showModalBottomSheet(context: context,
+        backgroundColor: Colors.yellow,
+        builder: (context){
+      return SafeArea(child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ListTile(
+            leading: Icon(Icons.add),
+            title: Text('ADD'),
+            onTap: (){
+              Navigator.of(context).pop();
+            },
+
+          ),
+          ListTile(
+            leading: Icon(Icons.remove),
+            title: Text('REMOVE'),
+            onTap: (){
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      ));
+        });
+  }
+
+  _bottomSheet(){
+    showBottomSheet(context: context,
+        backgroundColor: Colors.yellow,
+        builder: (context){
+          return SafeArea(child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: Icon(Icons.add),
+                title: Text('ADD'),
+                onTap: (){
+                  Navigator.of(context).pop();
+                },
+
+              ),
+              ListTile(
+                leading: Icon(Icons.remove),
+                title: Text('REMOVE'),
+                onTap: (){
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ));
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -62,6 +117,10 @@ class TextScreen extends State<TestScreen> {
               onPressed: _dialog,
               child: Text('dialog')
           ),
+          ElevatedButton(
+              onPressed: _modalBottomSheet, child: Text('modal bottomsheet')
+          ),
+          ElevatedButton(onPressed: _bottomSheet, child: Text('bottomsheet'))
         ],
       ),
     );
